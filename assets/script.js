@@ -25,6 +25,7 @@ const dots = document.querySelectorAll('.dot');
 let currentIndex = 0;
 
 function updateDots(index) {
+  // dots moving
     dots.forEach((dot, i) => {
         if (i === index) {
             dot.classList.add('dot_selected');
@@ -35,13 +36,7 @@ function updateDots(index) {
 }
 
 function updateCarousel(index, direction) {
-  //infinite
-	if (currentIndex === -1 && direction === 'left') {
-	  currentIndex = slides.length - 1;
-  } else if (currentIndex === slides.length && direction === 'right') {
-	  currentIndex = 0;
-  }
-
+  
   //maj img
   const imagePath = `assets/images/slideshow/${slides[currentIndex].image}`;
   bannerImg.src = imagePath;
