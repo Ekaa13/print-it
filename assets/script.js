@@ -1,4 +1,4 @@
-//importations html
+//Importations html
 
 const arrowRight = document.querySelector('.arrow_right')
 const arrowLeft = document.querySelector('.arrow_left')
@@ -8,7 +8,7 @@ const dots = document.querySelector('.dots')
 
 let slideIndex = 0;
 
-//tableau des slides
+//Tableau des slides
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -29,19 +29,14 @@ const slides = [
 ]
 
 
-// visualiser le premier element du tableau dans la banniere et afficher les points vide
+// Visualise le premier element du tableau dans la banniere et affiche les points vide
 
 showSlides(slideIndex);
 createdots();
 updatedots(slideIndex);
 
-//afficher l'image et le tagLine de la position sur le dom ( img et p )
-function showSlides( position ) {
 
-	img.src = "./assets/images/slideshow/"+slides[position].image;
-	tagLine.innerHTML =slides[position].tagLine;
-}
-//incrémentation de la position puis actualiser l'affichage
+//Incrémentation de la position puis actualiser l'affichage
 arrowRight.addEventListener('click',() => {
 	console.log("flèche de droite", slideIndex);
 	if(slideIndex === slides.length-1) {
@@ -49,12 +44,12 @@ arrowRight.addEventListener('click',() => {
 	}
 	else
 	 	slideIndex++;
-	
+	// Met à jour les données slideIndex
 	showSlides(slideIndex);
 	updatedots(slideIndex);
 });
 
-//décrémentation de la position puis actualiser l'affichage
+//Décrémentation de la position puis actualiser l'affichage
 arrowLeft.addEventListener('click',() => {
 	console.log("flèche de gauche", slideIndex);
 	if(slideIndex === 0){
@@ -63,26 +58,19 @@ arrowLeft.addEventListener('click',() => {
 	else
 	 	slideIndex--;
 	
-	// met à jour les données slideIndex
+	// Met à jour les données slideIndex
 	showSlides(slideIndex);
 	updatedots(slideIndex);
 });
 
-function updatedots(position){
-	//recuperer le contenu de la div dots
-	const listDots = document.querySelectorAll(".dot");
-console.log(position, listDots);
-for (let index = 0; index < listDots.length; index++) {
-	const div = listDots[index];
-	//update du tableau dots 
-	if(index !== position)
-	div.setAttribute("class", "dot");
-	else 
-	div.setAttribute("class", "dot dot_selected");
-}	
+//Affichage de l'image et de la tagLine de la position sur le dom (img/p)
+function showSlides( position ) {
+
+	img.src = "./assets/images/slideshow/"+slides[position].image;
+	tagLine.innerHTML =slides[position].tagLine;
 }
-	
-// création d'un dot par nombre d'élément dans slides
+
+// Création d'un dot par nombre d'élément dans slides
 function createdots(){
 	
 	for (let index = 0; index < slides.length; index++) {
@@ -92,3 +80,18 @@ function createdots(){
 			dots.appendChild(div);
 		}
 	}
+
+function updatedots(position){
+	//Récupération du contenu de la div dot
+	const listDots = document.querySelectorAll(".dot");
+console.log(position, listDots);
+for (let index = 0; index < listDots.length; index++) {
+	const div = listDots[index];
+	//Mise à jour de dot
+	if(index !== position)
+	div.setAttribute("class", "dot");
+	else 
+	div.setAttribute("class", "dot dot_selected");
+}	
+}
+	
