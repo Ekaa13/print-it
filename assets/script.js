@@ -31,67 +31,65 @@ const slides = [
 
 // Visualise le premier element du tableau dans la banniere et affiche les points vide
 
-showSlides(slideIndex);
-createdots();
-updatedots(slideIndex);
+showSlides(slideIndex)
+createdots()
+updatedots(slideIndex)
 
 
 //Incrémentation de la position puis actualiser l'affichage
 arrowRight.addEventListener('click',() => {
-	console.log("flèche de droite", slideIndex);
+	console.log("flèche de droite", slideIndex)
 	if(slideIndex === slides.length-1) {
-		slideIndex = 0;
+		slideIndex = 0
 	}
-	else
-	 	slideIndex++;
+	else {
+	 	slideIndex++
+	}
 	// Met à jour les données slideIndex
-	showSlides(slideIndex);
-	updatedots(slideIndex);
+	showSlides(slideIndex)
+	updatedots(slideIndex)
 });
 
 //Décrémentation de la position puis actualiser l'affichage
 arrowLeft.addEventListener('click',() => {
-	console.log("flèche de gauche", slideIndex);
+	console.log("flèche de gauche", slideIndex)
 	if(slideIndex === 0){
-		slideIndex = slides.length-1;
+		slideIndex = slides.length-1
 	}
-	else
-	 	slideIndex--;
-	
+	else {
+	 	slideIndex--
+	}
 	// Met à jour les données slideIndex
-	showSlides(slideIndex);
-	updatedots(slideIndex);
+	showSlides(slideIndex)
+	updatedots(slideIndex)
 });
 
 //Affichage de l'image et de la tagLine de la position sur le dom (img/p)
 function showSlides( position ) {
-
-	img.src = "./assets/images/slideshow/"+slides[position].image;
-	tagLine.innerHTML =slides[position].tagLine;
+	img.src = "./assets/images/slideshow/"+slides[position].image
+	tagLine.innerHTML =slides[position].tagLine
 }
 
 // Création d'un dot par nombre d'élément dans slides
 function createdots(){
-	
 	for (let index = 0; index < slides.length; index++) {
-		
-		const div = document.createElement("div");
-		div.setAttribute("class", "dot");
-			dots.appendChild(div);
+		const div = document.createElement("div")
+		div.setAttribute("class", "dot")
+			dots.appendChild(div)
 		}
 	}
 
 function updatedots(position){
 	//Récupération du contenu de la div dot
-	const listDots = document.querySelectorAll(".dot");
-console.log(position, listDots);
+	const listDots = document.querySelectorAll(".dot")
+console.log(position, listDots)
 for (let index = 0; index < listDots.length; index++) {
-	const div = listDots[index];
-	//Mise à jour de dot
+	const div = listDots[index]
+	//Mise à jour des dots
 	if(index !== position)
-	div.setAttribute("class", "dot");
+	div.setAttribute("class", "dot")
 	else 
-	div.setAttribute("class", "dot dot_selected");
+	div.setAttribute("class", "dot dot_selected")
 }	
 }
 	
